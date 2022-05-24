@@ -294,9 +294,9 @@ def save_model(model, name: str = 'KDC'):
     raise ValueError("model type '%s' not supported!" % str(type(model)))
 
 
-def load_model(name: str = 'KDC'):
+def load_model(name: str = 'KDC', **kwargs): # num_genes, num_drugs, loss_ae
     from torch import load
     import os
-    r = KDC()
+    r = KDC(**kwargs)
     r.load_state_dict(load(os.path.join(os.path.dirname(os.path.abspath(__file__)), f'{name}.th'), map_location='cpu'))
     return r

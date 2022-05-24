@@ -38,7 +38,7 @@ class Dataset:
         else:
             if dose_key is None:
                 dose_key = "dose_val"
-            elif not (dose_key in data.obs):
+            if not (dose_key in data.obs):
                 print(f"Creating a default value 1.0 for dose_key {dose_key}")
                 dose_val = []
                 for i in range(len(data)):
